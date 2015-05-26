@@ -1,0 +1,19 @@
+<html>
+<head>
+<title>Getting Mouse Clicks</title>
+	<script src="policy.js"></script>
+	<script src="coordinate.js"></script>
+</head>
+<body>
+	<div>Get the coordinates of click</div>
+	<script type="text/javascript">
+		var button = document.querySelector("body");
+		console.log(button);
+		function once(event)
+		{
+    		alert(event.pageX+" "+event.pageY);
+		}
+		button.addEventListener("click", once);
+	</script>
+</body>
+</html>
