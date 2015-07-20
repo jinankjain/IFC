@@ -1,3 +1,5 @@
+<!-- Author Jinank Jain -->
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -22,33 +24,33 @@
       <div class="row-fluid">
       <div class="col-md-1"></div>
       <div class="col-md-10">
-      <h1>Documentation for Declassification of scripts</h1>
-      <h3><b>How to specify a policy?</b></h3>
-      <font size="5" color="#563D7C"><p>To specify and distinguish it from the normal javascript we made a new file extension named "<b>.policy</b>" and on this we enforce the same origin policy i.e only domain can only give policy and no one else has the permission to inject the policy for the domain.</p></font>
-      <h3><b>What special privileges are given to these policies?</b></h3>
-      <font size="5" color="#563D7C">
-      <ul>
-      <li>Policies always run with PC=1 there is no taint tracking they run without any sort of NSU checks. This is achieved by checking "<b>.policy</b>" extension and same origin and when both these conditions are satisfied then a variable called "<b>isPolicy</b>" is set true while executing that portion of javascript which turn off of taint tracking.</li>
-      <li>Policy has special permissions to change labels of different javascript objects for declassify that variables for some scripts. This is achieved by making a new native function named "<b>setLabel</b>" which can be invoked on any javascript object and the argument which this function takes is the url for which you want to declassify that variable to.
-      <div class="well">
-      <p>// Sample Code explaning how to use the new APIs</p>
-      <p>var x = 10;</p>
-      x.setLabel("www.google.com");
-      </div>
-      </li>
-      </ul>
-      </font>
-      <h3><b>What is new added in the labelling system?</b></h3>
-      <font size="5" color="#563D7C">Earlier there used to be only one label named confidienlty label now a new label named integrity label has been added and NSU check has been modified accordingly</font>
-      <h3><b>What new APIs exposed at the javascript engine level?</b></h3>
-      <font size="5" color="#563D7C">There is a new APIs which is exposed to every javascript object is "<b>setPrivate</b>". This make any variable to run as the confidientiality as the script itself. Unless this all script run with bottom confidentiality means that they don't have any secret varibale of their own i.e all variables declared by them are public varibles.
-      <div class="well">
-      <p>// Sample Code explaning how to use the new APIs</p>
-      <p>var x = 10;</p>
-      x.setPrivate();
-      </div>
-      </font>
-      <h3><b>How user events are handeld?</b></h3>
+        <h1>Documentation for Declassification of scripts</h1>
+        <h3><b>How to specify a policy?</b></h3>
+        <font size="5" color="#563D7C"><p>To specify and distinguish it from the normal javascript we made a new file extension named "<b>.policy</b>" and on this we enforce the same origin policy i.e only domain can only give policy and no one else has the permission to inject the policy for the domain.</p></font>
+        <h3><b>What special privileges are given to these policies?</b></h3>
+        <font size="5" color="#563D7C">
+          <ul>
+            <li>Policies always run with PC=1 there is no taint tracking they run without any sort of NSU checks. This is achieved by checking "<b>.policy</b>" extension and same origin and when both these conditions are satisfied then a variable called "<b>isPolicy</b>" is set true while executing that portion of javascript which turn off of taint tracking.</li>
+            <li>Policy has special permissions to change labels of different javascript objects for declassify that variables for some scripts. This is achieved by making a new native function named "<b>setLabel</b>" which can be invoked on any javascript object and the argument which this function takes is the url for which you want to declassify that variable to.
+              <div class="well">
+                <p>// Sample Code explaning how to use the new APIs</p>
+                <p>var x = 10;</p>
+                x.setLabel("www.google.com");
+              </div>
+            </li>
+          </ul>
+        </font>
+        <h3><b>What is new added in the labelling system?</b></h3>
+        <font size="5" color="#563D7C">Earlier there used to be only one label named confidienlty label now a new label named integrity label has been added and NSU check has been modified accordingly</font>
+        <h3><b>What new APIs exposed at the javascript engine level?</b></h3>
+        <font size="5" color="#563D7C">There is a new APIs which is exposed to every javascript object is "<b>setPrivate</b>". This make any variable to run as the confidientiality as the script itself. Unless this all script run with bottom confidentiality means that they don't have any secret varibale of their own i.e all variables declared by them are public varibles.
+          <div class="well">
+            <p>// Sample Code explaning how to use the new APIs</p>
+            <p>var x = 10;</p>
+            x.setPrivate();
+          </div>
+        </font>
+        <h3><b>How user events are handeld?</b></h3>
       <font size="5" color="#563D7C">Policy events are always inserted infront of the event queue which ensures that policy event handlers always run first and then the other event handlers are registered.</font>
       <h3><b>What is the policy for sending data on the network?</b></h3>
       <font size="5" color="#563D7C">The check that we perform while sending any data on the network is based upon the integrity and the confideintly label of the variable</font>
