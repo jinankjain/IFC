@@ -26,7 +26,14 @@
       <div class="col-md-10">
         <h1>Documentation for Declassification of scripts</h1>
         <h3><b>How to specify a policy?</b></h3>
-        <font size="5" color="#563D7C"><p>To specify and distinguish it from the normal javascript we made a new file extension named "<b>.policy</b>" and on this we enforce the same origin policy i.e only domain can only give policy and no one else has the permission to inject the policy for the domain.</p></font>
+        <font size="5" color="#563D7C"><p>To specify and distinguish it from the normal javascript we made a new file extension named "<b>.policy</b>" and on this we enforce the same origin policy i.e only domain can only give policy and no one else has the permission to inject the policy for the domain.</p>
+        <p>Code Relevant to this could be find in the following file:</p>
+        <div class="well">
+        <ul>
+        	<li>WebCore->html->HTMLScriptElement.cpp</li>
+        </ul>
+        </div>
+        </font>
         <h3><b>What special privileges are given to these policies?</b></h3>
         <font size="5" color="#563D7C">
           <ul>
@@ -39,9 +46,23 @@
               </div>
             </li>
           </ul>
+          <p>Code Relevant to this could be find in the following file:</p>
+          <div class="well">
+          <ul>
+          	<li>JavaScriptCore->interpreter->Interpreter.cpp</li>
+          	<li>JavaScriptCore->runtime->ObjectPrototype.cpp</li>
+          </ul>
+          </div>
         </font>
         <h3><b>What is new added in the labelling system?</b></h3>
-        <font size="5" color="#563D7C">Earlier there used to be only one label named confidienlty label now a new label named integrity label has been added and NSU check has been modified accordingly</font>
+        <font size="5" color="#563D7C">Earlier there used to be only one label named confidienlty label now a new label named integrity label has been added and NSU check has been modified accordingly. Now JSLabel is a pair of {clabel, ilabel} 
+        <p>Code Relevant to this could be find in the following file:</p>
+        <div class="well">
+        <ul>
+        	<li>JavaScriptCore->label->JSLabel.cpp</li>
+        </ul>
+        </div>
+        </font>
         <h3><b>What new APIs exposed at the javascript engine level?</b></h3>
         <font size="5" color="#563D7C">There is a new APIs which is exposed to every javascript object is "<b>setPrivate</b>". This make any variable to run as the confidientiality as the script itself. Unless this all script run with bottom confidentiality means that they don't have any secret varibale of their own i.e all variables declared by them are public varibles.
           <div class="well">
@@ -49,11 +70,31 @@
             <p>var x = 10;</p>
             x.setPrivate();
           </div>
+          <p>Code Relevant to this could be find in the following file:</p>
+          <div class="well">
+          <ul>
+          	<li>JavaScriptCore->runtime->ObjectPrototype.cpp</li>
+          </ul>
+          </div>
         </font>
         <h3><b>How user events are handeld?</b></h3>
-      <font size="5" color="#563D7C">Policy events are always inserted infront of the event queue which ensures that policy event handlers always run first and then the other event handlers are registered.</font>
-      <h3><b>What is the policy for sending data on the network?</b></h3>
-      <font size="5" color="#563D7C">The check that we perform while sending any data on the network is based upon the integrity and the confideintly label of the variable</font>
+      	<font size="5" color="#563D7C">Policy events are always inserted infront of the event queue which ensures that policy event handlers always run first and then the other event handlers are registered.
+      		<p>Code Relevant to this could be find in the following file:</p>
+          <div class="well">
+          <ul>
+          	<li>WebCore->dom->Node.cpp</li>
+          </ul>
+          </div>
+      	</font>
+      	<h3><b>What is the policy for sending data on the network?</b></h3>
+      	<font size="5" color="#563D7C">The check that we perform while sending any data on the network is based upon the integrity and the confideintly label of the variable.
+      		<p>Code Relevant to this could be find in the following file:</p>
+          <div class="well">
+          <ul>
+          	<li>WebCore->bindings->js->Custom->Node.cpp</li>
+          </ul>
+          </div>
+      	</font>
       </div>
       <div class="col-md-1"></div>
       </div>
