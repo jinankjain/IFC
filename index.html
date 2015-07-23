@@ -34,6 +34,20 @@
         </ul>
         </div>
         </font>
+        <h3><b>What modifications in script tag took place?</b></h3>
+        <font size="5" color="#563D7C"><p>To set the minimum context in which a script should run now could be set by using a one more attribute in the script tag named setContext. </p>
+        <div class="well">
+          <p>// Sample Code explaning how to use the new APIs</p>
+          <code class="language-html" data-lang="html">
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" setContext="http://google.com"</span><span class="nt">&gt;&lt;/script&gt;</span></code></div>
+       
+        <p>Code Relevant to this could be find in the following file:</p>
+        <div class="well">
+        <ul>
+        	<li>WebCore->html->HTMLScriptElement.cpp</li>
+        </ul>
+        </div>
+        </font>
         <h3><b>What special privileges are given to these policies?</b></h3>
         <font size="5" color="#563D7C">
           <ul>
@@ -83,6 +97,7 @@
           <div class="well">
           <ul>
           	<li>WebCore->dom->Node.cpp</li>
+          	<li>EventTarget.cpp</li>
           </ul>
           </div>
       	</font>
