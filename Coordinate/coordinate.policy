@@ -1,13 +1,13 @@
-var cnt = 0;
-var maxLimit = 5;
+cnt = 0;
+maxLimit = 5;
+cnt.setLabel("User");
 window.addEventListener("click", function(event){
 	if(cnt<maxLimit)
 	{
-		alert(0+" "+0);
 		event.stopPropagation();
 		cnt = cnt+1;
 	}
-	if(cnt>maxLimit)
+	else
 	{
 		cnt = 0;
 	}
